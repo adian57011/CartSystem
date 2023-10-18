@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="890c672e603a4ebc9da0d83004f66f19" Name="Diagram1">
+        <EntityTypeShape EntityType="CartSystemModel.Category" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CartSystemModel.Customer" Width="1.5" PointX="0.875" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CartSystemModel.Product" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CartSystemModel.ProductCategory" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CartSystemModel.ProductCustomer" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CartSystemModel.sysdiagram" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="CartSystemModel.FK_ProductCategory_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="CartSystemModel.FK_ProductCustomer_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="CartSystemModel.FK_ProductCategory_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="CartSystemModel.FK_ProductCustomer_Product" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

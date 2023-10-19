@@ -22,10 +22,13 @@ namespace WebApplication1.Controllers
 
             if (ModelState.IsValid)
             {
-                Customer c = new Customer();
-                c.Name = obj.Name;
-                c.Email = obj.Email;
-                c.Password = obj.Password;
+                Customer c = new Customer()
+                {
+                    Name = obj.Name,
+                    Email = obj.Email,
+                    Password = obj.Password
+                };
+               
     
 
                 db.Customers.Add(c);

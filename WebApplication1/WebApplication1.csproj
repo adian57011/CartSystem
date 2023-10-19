@@ -132,6 +132,7 @@
     <Compile Include="Category.cs">
       <DependentUpon>Erd.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>Erd.tt</DependentUpon>
@@ -154,6 +155,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartDto.cs" />
     <Compile Include="Models\CustomerDto.cs" />
     <Compile Include="Models\LoginDto.cs" />
     <Compile Include="Product.cs">
@@ -231,6 +233,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Signup.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

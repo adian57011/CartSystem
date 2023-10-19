@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+}
+
+@{
+    double price = 0;
+    foreach(var item in Model)
+    {
+        price += item.Price;
+    }
+}
+
+<h2>Cart</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>
+                <a href="Customer/DeleteCart/@item.Id"
+                   class="btn btn-danger">
+                    Delete From Cart
+                </a>
+            </td>
+        </tr>
+    }
+
+    <tr>
+        <td></td>
+        <td> Total</td>
+        <td> @price</td>
+    </tr>
+</table>
+
+
+

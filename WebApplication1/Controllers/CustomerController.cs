@@ -9,6 +9,22 @@ namespace WebApplication1.Controllers
 {
     public class CustomerController : Controller
     {
+        public List<CartDto> cart
+        {
+            get
+            {
+                if(Session["cart"] == null)
+                {
+                    Session["cart"] = new List<CartDto>();
+                    return (List<CartDto>)Session["cart"];
+                }
+                return (List<CartDto>)Session["cart"];
+            }
+            set
+            {
+                Session["cart"] = value;
+            }
+        }
         // GET: Customer
         public ActionResult Index()
         {
@@ -24,33 +40,88 @@ namespace WebApplication1.Controllers
             var db = new CartSystemEntities();
 
             var product = db.Products.Find(id);
+            CartDto p = new CartDto()
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price
+            };
 
-            Session["ProductId"] = product.Id;
-            Session["ProductName"] = product.Name;
-            Session["ProductPrice"] = product.Price;
-
-            if(Session["ProductId"]!=null)
+            cart.Add(p);
+            Console.WriteLine(p);
+            if(cart != null)
             {
                 TempData["msg"] = "Product Added";
                 return RedirectToAction("Index");
             }
             else
             {
-                TempData["msg"] = "Product Addition Failed";
+                TempData["msg"] = "Add Failed";
                 return RedirectToAction("Index");
             }
+            
+
         }
 
         public ActionResult Cart()
         {
-            CartDto cart = new CartDto()
+            var data = cart.ToList();
+            double total = 0;
+            foreach(var item in cart)
             {
-                Id = (int)Session["ProductId"],
-                Name = Session["ProductName"].ToString(),
-                Price = (double)Session["ProductPrice"]
+                total += Double.Parse(item.Price); 
+            }
+            ViewBag.TotalPrice = total;
+
+            return View(data);
+        }
+
+        public ActionResult DeleteCart(int id)
+        {
+            var obj = cart.FirstOrDefault(item => item.Id == id);
+            if(obj != null)
+            {
+                cart.Remove(obj);
+                TempData["msg"] = "Item Removed";
+                return RedirectToAction("Cart");
+            }
+            else
+            {
+                TempData["msg"] = "Remove Failed";
+                return RedirectToAction("Cart");
+            }
+            
+        }
+
+        public ActionResult Order()
+        {
+            var db = new CartSystemEntities();
+            var o = new Order()
+            {
+                CustomerId = (int)Session["Id"],
+                Date = DateTime.Now
             };
 
-            return View(cart);
+            db.Orders.Add(o);
+            db.SaveChanges();
+
+            foreach(var item in cart)
+            {
+                var od = new OrderDetail()
+                {
+                    OrderId = o.Id,
+                    ProductId = item.Id,
+                };
+
+                db.OrderDetails.Add(od);
+                db.SaveChanges();
+            }
+
+            cart.Clear();
+            TempData["msg"] = "Order Completed";
+            return RedirectToAction("Index");
         }
+
+
     }
 }

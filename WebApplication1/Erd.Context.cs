@@ -33,6 +33,8 @@ namespace WebApplication1
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<ProductCustomer> ProductCustomers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

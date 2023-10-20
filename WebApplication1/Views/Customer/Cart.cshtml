@@ -3,15 +3,13 @@
     ViewBag.Title = "Cart";
 }
 
-@{
-    double price = 0;
-    foreach(var item in Model)
-    {
-        price += item.Price;
-    }
-}
-
 <h2>Cart</h2>
+@{ 
+    if(TempData["msg"] != null)
+            {
+                <span class="text-info">@TempData["msg"]</span> <br />
+            }
+}
 
 <table class="table table-bordered">
     <tr>
@@ -26,7 +24,7 @@
             <td>@item.Name</td>
             <td>@item.Price</td>
             <td>
-                <a href="Customer/DeleteCart/@item.Id"
+                <a href="DeleteCart/@item.Id"
                    class="btn btn-danger">
                     Delete From Cart
                 </a>
@@ -37,7 +35,10 @@
     <tr>
         <td></td>
         <td> Total</td>
-        <td> @price</td>
+        <td> @ViewBag.TotalPrice</td>
+        <td>
+            <a href="Order" class="btn btn-success">Confirm Order</a>
+        </td>
     </tr>
 </table>
 

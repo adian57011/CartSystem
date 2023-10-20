@@ -15,6 +15,11 @@
         <AssociationConnector Association="CartSystemModel.FK_ProductCustomer_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="CartSystemModel.FK_ProductCategory_Product" ManuallyRouted="false" />
         <AssociationConnector Association="CartSystemModel.FK_ProductCustomer_Product" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CartSystemModel.OrderDetail" Width="1.5" PointX="5.375" PointY="5.5" />
+        <EntityTypeShape EntityType="CartSystemModel.Order" Width="1.5" PointX="3.125" PointY="7.25" />
+        <AssociationConnector Association="CartSystemModel.FK_Orders_Customer" />
+        <AssociationConnector Association="CartSystemModel.FK_OrderDetails_Orders" />
+        <AssociationConnector Association="CartSystemModel.FK_OrderDetails_Product" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

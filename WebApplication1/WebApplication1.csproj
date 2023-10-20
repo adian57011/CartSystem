@@ -158,6 +158,13 @@
     <Compile Include="Models\CartDto.cs" />
     <Compile Include="Models\CustomerDto.cs" />
     <Compile Include="Models\LoginDto.cs" />
+    <Compile Include="Models\OrderDto.cs" />
+    <Compile Include="Order.cs">
+      <DependentUpon>Erd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetail.cs">
+      <DependentUpon>Erd.tt</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs">
       <DependentUpon>Erd.tt</DependentUpon>
     </Compile>

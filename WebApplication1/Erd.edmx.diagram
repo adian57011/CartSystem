@@ -20,6 +20,7 @@
         <AssociationConnector Association="CartSystemModel.FK_Orders_Customer" />
         <AssociationConnector Association="CartSystemModel.FK_OrderDetails_Orders" />
         <AssociationConnector Association="CartSystemModel.FK_OrderDetails_Product" />
+        <AssociationConnector Association="CartSystemModel.FK_OrderDetails_Customer" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

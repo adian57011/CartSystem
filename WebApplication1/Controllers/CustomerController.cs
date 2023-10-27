@@ -25,7 +25,7 @@ namespace WebApplication1.Controllers
                 Session["cart"] = value;
             }
         }
-        // GET: Customer
+        
         public ActionResult Index()
         {
             var db = new CartSystemEntities();
@@ -111,6 +111,7 @@ namespace WebApplication1.Controllers
                 {
                     OrderId = o.Id,
                     ProductId = item.Id,
+                    CustomerId = (int)Session["Id"],
                 };
 
                 db.OrderDetails.Add(od);
@@ -120,6 +121,16 @@ namespace WebApplication1.Controllers
             cart.Clear();
             TempData["msg"] = "Order Completed";
             return RedirectToAction("Index");
+        }
+
+        public ActionResult OrderDetails()
+        {
+            var customer = (int)Session["Id"];
+            var db = new CartSystemEntities();
+
+            var orderDetails = db.OrderDetails.Where(x => x.CustomerId == customer ).ToList();
+
+            return View(orderDetails);
         }
 
 

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "OrderDetails";
+}
+
+<h2>OrderDetails</h2>
+
+<a href="Customer/Cart" class="btn btn-info">View Cart</a>
+<br />
+<a href="Customer/OrderDetails" class="btn btn-info">View Order Details</a>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Product Name</th>
+        <th>Customer Name</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Order.Id</td>
+            <td>@item.Product.Name</td>
+            <td>@item.Customer.Name</td>
+        </tr>
+    }
+</table>
+
+
